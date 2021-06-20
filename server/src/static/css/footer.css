@@ -1,0 +1,15 @@
+.Footer_items {
+  letter-spacing: 1px;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  padding-left: 3rem;
+}
+
+.Footer_items a,
+.Footer_items a:visited {
+  color: black; /* Dark Neon */
+}
+
+.Footer_items a:hover {
+  color: #56C1FF;
+}

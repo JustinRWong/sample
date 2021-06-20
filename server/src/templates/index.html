@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if USE_FIREBASE_STATIC_ASSET_SOURCE %}
+<script type=text/javascript src="{{ url_for('static', filename='main.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% else %}
+<script type=text/javascript src="https://neon-core-api-static-assets.web.app/js/main.js"></script>
+<script type=text/javascript src="https://neon-core-api-static-assets.web.app/otp.js"></script>
+<link rel="stylesheet" href="https://neon-core-api-static-assets.web.app/css/style.css">
+{$ endif $}
+
+<div class='container-fluid'>
+  <div class='row'>
+    <div class='col'>
+      Pass arguments with query string: {{ query_params}}
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

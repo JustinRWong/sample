@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "go-neon-312006"
+  },
+  "targets": {
+    "go-neon-312006": {
+      "hosting": {
+        "neon-starter-template-flask-service": [
+          "sites/hosting"
+        ]
+      }
+    }
+  }
+}

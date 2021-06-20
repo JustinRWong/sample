@@ -1,0 +1,26 @@
+<link href="{{url_for('static', filename='css/footer.css')}}" rel="stylesheet">
+
+{% include 'footer_terms_of_service.html' %}
+
+<div id="footer" class='container-fluid ml-15 pt-4 pb-30'>
+  <div class='row'>
+
+    <div class='col-auto'>
+      <img src='https://go-neon-312006.web.app/images/neon-logo.png' height='45px'>
+    </div>
+
+    <div class='col'>
+      <div class='row'>
+        <span class="Footer_items"><a href="#about">About</a></span>
+      </div>
+      <div class='row'>
+        <span class="Footer_items">
+          <a href="#TermsOfService_modal" data-toggle="modal" data-target="#TermsOfService_modal">Terms of Service</a>
+        </span>
+      </div>
+      <div class='row'>
+        <span class="Footer_items"><a href="#chat">Chat with us</a></span>
+      </div>
+    </div>
+  </div>
+</div>
