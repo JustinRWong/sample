@@ -3,7 +3,6 @@ from flask_cors import CORS
 
 from app import app
 from routes_utils import *
-from models.User import User
 
 '''
 DEMO Routes

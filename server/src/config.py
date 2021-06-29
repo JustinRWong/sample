@@ -7,15 +7,12 @@ class Config(object):
     TESTING = False
     CSRF_ENABLED = True
     SECRET_KEY = 'secret'
-    SQLALCHEMY_DATABASE_URI = os.environ['SQLALCHEMY_DATABASE_URI']
     USE_FIREBASE_STATIC_ASSET_SOURCE = False
 
 
 class ProductionConfig(Config):
     DEBUG = False
     SECRET_KEY = 'secret'
-    SQLALCHEMY_DATABASE_URI = os.environ['SQLALCHEMY_DATABASE_URI']
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
     USE_FIREBASE_STATIC_ASSET_SOURCE=True
 
 class StagingConfig(Config):
@@ -28,8 +25,6 @@ class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
     SECRET_KEY = 'secret'
-    SQLALCHEMY_DATABASE_URI="sqlite://"
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
     USE_FIREBASE_STATIC_ASSET_SOURCE=False
 
 
