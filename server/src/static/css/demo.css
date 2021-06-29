@@ -1,0 +1,30 @@
+button {
+  background-color: #16E7CF; /* Neon */
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 6px;
+  width: 80%;
+}
+
+.stockx {
+  border-radius: 5px;
+  font-size: 10px;
+  display: inline-block;
+  padding: 10px 10px;
+}
+
+#stockx_cancel {
+  background-color: #FFFFFF;
+  color: gray;
+}
+
+#stockx_continue {
+  background-color: #08a05c;
+  color: white;
+}

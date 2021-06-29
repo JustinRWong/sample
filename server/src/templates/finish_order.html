@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<script type="text/javascript">
+  const NeonCoreEndpoint = "https://core-api.joinneon.com"
+  const NeonDashboardURL = "https://dashboard.joinneon.com"
+  const NeonCoreHeader = {
+    'X-NEON-TOKEN': "SAMPLE_API_KEY"
+  }
+
+  function getParameterByName(name, url = window.location.href) {
+        // Use regex to parse query parameters
+       name = name.replace(/[\[\]]/g, '\\$&');
+       var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+           results = regex.exec(url);
+       if (!results) return null;
+       if (!results[2]) return '';
+       return decodeURIComponent(results[2].replace(/\+/g, ' '));
+   }
+
+  async function call_api_with_address(params) {
+   if (document.getElementById('stockx_continue').innerHTML != 'Confirm Purchase'){
+     document.getElementById('stockx_continue').innerHTML = 'Confirm Purchase';
+     document.getElementById('addy').style.display = 'none';
+     document.getElementById('confirm').style.display = '';
+   } else if (document.getElementById('stockx_continue').innerHTML == 'Confirm Purchase') {
+     // Clicking Confirm purchase should call POST to the complete txn endpoint.
+     const urlSearchParams = new URLSearchParams(window.location.search);
+     const params = Object.fromEntries(urlSearchParams.entries());
+     console.log('All extracted query parameters: ', params);
+     const pmt_token = params['payment_token'];
+     console.log('Extracted payment_token: ', pmt_token);
+     const completetxn_endpoint = NeonCoreEndpoint + '/core/complete_transaction/' + pmt_token;
+     console.log('Fetching POST ', completetxn_endpoint);
+     let response = await fetch(completetxn_endpoint, {
+       method: 'post',
+       body: null
+     });
+     let returned_txn_json = await response.json();
+     alert("Payment token " + pmt_token + " has been submitted to complete transaction.\n\nResponse from Neon Core API:" + JSON.stringify(returned_txn_json));
+     console.log(returned_txn_json);
+     window.location.href=NeonDashboardURL;
+   }
+  }
+
+
+</script>
+
+<img id='addy' src="{{url_for('static', filename='images/Address_info.png')}}" width="100%" height="100%"/>
+<img id='confirm' src="{{url_for('static', filename='images/Confirm_purchase.png')}}" width="100%" height="100%" style='display:none;'/>
+<img id='submitted' src="{{url_for('static', filename='images/stockx_nofooter.png')}}" width="100%" height="100%" style='display:none;'/>
+
+
+<div class='row continue' id='bar'>
+  <div class='col'></div>
+  <div class='col-1'>
+    <button id='stockx_cancel' class='stockx border'>Cancel</button>
+  </div>
+  <div class='col-1'></div>
+  <div class='col-2'>
+    <button id='stockx_continue' class='stockx' onClick="call_api_with_address('original_item_size=10&original_item_name=Jordan%2011%20Retro&original_item_price=274&eligibility=True&manufactuer_part_number=MSC-1292')">
+      Next</button>
+
+  </div>
+</div>
+{% endblock %}
