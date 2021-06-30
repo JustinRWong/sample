@@ -13,7 +13,8 @@ class Config(object):
 class ProductionConfig(Config):
     DEBUG = False
     SECRET_KEY = 'secret'
-    USE_FIREBASE_STATIC_ASSET_SOURCE=True
+    ENV=os.environ['ENV']
+
 
 class StagingConfig(Config):
     DEVELOPMENT = True

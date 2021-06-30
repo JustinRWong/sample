@@ -9,8 +9,12 @@ DEMO Routes
 '''
 @app.route('/', methods=['GET'])
 def demo():
-    return render_template('demo.html')
+    return render_template('demo.html',
+                            ENV=app.config.get('ENV')
+                            )
 
 @app.route('/finish_order')
 def finish_order():
-    return render_template('finish_order.html')
+    return render_template('finish_order.html',
+                            ENV=app.config.get('ENV')
+                            )

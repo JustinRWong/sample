@@ -1,4 +1,9 @@
+
+{% if ENV == 'PRODUCTION' %}
+<link href="https://neon-sample.web.app/css/footer.css?v1" rel="stylesheet">
+{% else %}
 <link href="{{url_for('static', filename='css/footer.css')}}" rel="stylesheet">
+{% endif%}
 
 {% include 'footer_terms_of_service.html' %}
 

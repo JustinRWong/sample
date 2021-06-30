@@ -12,8 +12,11 @@
     <title>Neon Stockx Demo</title>
     <link rel="shortcut icon" href="https://neon-core-api-static-assets.web.app/images/favicon.ico" />
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/demo.css') }}">
-
+    {% if ENV == 'PRODUCTION' %}
+    <link href="https://neon-sample.web.app/css/demo.css?v1" rel="stylesheet">
+    {% else %}
+    <link href="{{url_for('static', filename='css/demo.css')}}" rel="stylesheet">
+    {% endif%}
   </head>
 
   <body>
