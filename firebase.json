@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site": "neon-sample",
+    "public": "server/src/static",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

@@ -14,7 +14,7 @@ RUN apt-get update && \
 # set PORT to handle requests
 ENV PORT 8080 \
     APP_SETTINGS="config.ProductionConfig" \
-    SQLALCHEMY_DATABASE_URI="sqlite://"
+    ENV="PRODUCTION"
 
 
 

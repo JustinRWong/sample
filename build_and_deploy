@@ -1,0 +1,6 @@
+firebase --project=go-neon-312006 deploy
+
+cd server
+
+gcloud builds submit --tag gcr.io/go-neon-312006/sample --project=go-neon-312006
+gcloud beta run deploy sample --image gcr.io/go-neon-312006/sample --project=go-neon-312006 --platform=managed --region=us-west1 --ingress=all

@@ -1,5 +1,5 @@
 
-const NeonCoreEndpoint = "https://mx-demo-wjrnu3p4ya-uc.a.run.app";
+const NeonCoreEndpoint ="https://mx-demo-wjrnu3p4ya-uc.a.run.app";
 const NeonDashboardURL = "https://dashboard.joinneon.com";
 const NeonCoreHeader = {
   'X-NEON-TOKEN': "SAMPLE_API_KEY"
@@ -32,23 +32,9 @@ function process_payment_token(evt) {
      original_item_name: "Jordan 11 Retros",
      original_item_size: "10M",
      manufactuer_part_number: "Sku 378039 011",
-     email: "justin@joinneon.com"
+     email: "jackie@joinneon.com"
    }
    var queryString = $.param(stockx_data);
-
-
-   // First validate parameters using Neon Core API validate endpoint
-   const validateEndpoint = NeonCoreEndpoint + "/core/validate?" + queryString;
-   console.log("Calling validation endpoint:  GET ", validateEndpoint);
-   var validation_response = fetch(validateEndpoint, {
-     headers: NeonCoreHeader,
-     mode: 'no-cors'
-   })
-   .then(function(response) {
-     return response.json();
-   }).then(function(data) {
-     console.log(data);
-   });
 
    // Make POST call to request for a session token for passed parameters using NEON API TOKEN.
    const createInitiateNeonEndpoint = NeonCoreEndpoint + '/core/createInitiateNeonSession?'+queryString;
@@ -64,7 +50,6 @@ function process_payment_token(evt) {
        console.log('Openning new window: ', initiateNeonEndpoint);
        neonPaymentWindow = window.open(initiateNeonEndpoint,"","resizable=no,width=420,height=520");
        console.log(result);
-       console.log(neonPaymentWindow);
      },
      error: function(error) {
        console.log(error)
@@ -116,3 +101,28 @@ function process_payment_token(evt) {
     window.location.href=NeonDashboardURL;
   }
  }
+
+$(document).ready(function() {
+  const stockx_data = {
+    eligibility: true,
+    original_item_price: 274.00,
+    original_item_name: "Jordan 11 Retros",
+    original_item_size: "10M",
+    manufactuer_part_number: "Sku 378039 011",
+    email: "jackie@joinneon.com"
+  }
+  var queryString = $.param(stockx_data);
+
+  // First validate parameters using Neon Core API validate endpoint
+  const validateEndpoint = NeonCoreEndpoint + "/core/validate?" + queryString;
+  console.log("Calling validation endpoint:  GET ", validateEndpoint);
+  var validation_response = fetch(validateEndpoint, {
+    headers: NeonCoreHeader,
+    mode: 'no-cors'
+  })
+  .then(function(response) {
+    return response.json();
+  }).then(function(data) {
+    console.log(data);
+  });
+})

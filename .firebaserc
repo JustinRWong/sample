@@ -5,7 +5,7 @@
   "targets": {
     "go-neon-312006": {
       "hosting": {
-        "neon-starter-template-flask-service": [
+        "neon-sample": [
           "sites/hosting"
         ]
       }
